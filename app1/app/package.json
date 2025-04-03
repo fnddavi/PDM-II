@@ -1,0 +1,35 @@
+{
+  "name": "app-cloud",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "@ffmpeg/core": "^0.12.10",
+    "@ffmpeg/ffmpeg": "^0.12.15",
+    "@ffmpeg/util": "^0.12.2",
+    "axios": "^1.8.1",
+    "buffer": "^6.0.3",
+    "expo": "~52.0.37",
+    "expo-av": "~15.0.2",
+    "expo-constants": "^17.0.7",
+    "expo-file-system": "^18.0.11",
+    "expo-status-bar": "~2.0.1",
+    "react": "18.3.1",
+    "react-native": "0.76.7",
+    "react-native-dotenv": "^3.4.11",
+    "react-native-paper": "^5.13.1",
+    "react-native-vector-icons": "^10.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@types/react": "~18.3.12",
+    "@types/react-native-vector-icons": "^6.4.18",
+    "typescript": "^5.3.3"
+  },
+  "private": true
+}

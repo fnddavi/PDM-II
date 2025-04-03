@@ -1,0 +1,37 @@
+{
+  "expo": {
+    "name": "app-cloud",
+    "slug": "app-cloud",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      // Implemente a lógica para obter o token de acesso da sua conta de serviço
+      // Consulte a documentação do Google Cloud para mais detalhes
+      // Um exemplo seria utilizar o seguinte comando no seu backend:
+      // gcloud auth print-access-token
+      // O token pode expirar depois de 1 hora
+      "GCLOUD_ACCESS_TOKEN": "ya29.c.c0ASRK0GY3DNxmO_39Wvjz18bgc4olOqC5wuByRzhi0qUfFpolIAMBf-ueSaH02Kx4qgXAYT9fL4ds1uzCD3xdQV1UNUPcpC6-ikOonF6dlo5-_RA4cNCzevZYUt7ouegvI3xbFrCGWItCZBlulTaKHlm7d7gGDBmYfpm_am3pmvK15cnpJL4IHF2Xs1uxt-lETf9lkEOk5N-s_k9QWJGY7wrPF4pqAtWmv4VoCYPUI4NZIXMFlKrYgpiXrSxkuGiJDwnuoCsvm3saftUp0g5QcV9cJ8-r5zT7LFrck2ZJiVZcmdR-kBKO1k03ZLk_BRcHNsEIyzBb9Vf0PixTYWoeRT4_PunbQEZ9VVuvZ0Vlx96h7eJqSrqVwU_zPyytHumIqbUPT397AQ610_xxVirddgj6F6o-_jysIvzvRrlyUl2ziwUmjRmRoFf28unvsUUJiJfmaqt06qZ3JyVFIk5p1k-x7x0qc4elupUJnp6oY9yux6Fy0-Mt-g4wppifvIqUSh1aoUrQJmcU7njxckuc1-jR1cdOzBVlU0ftrz7v3q5B6g7qJWf6vRjs9ItaVfVRn_M30Ob-4sQOmQxuBwldibbFboymr-_hBYXVSvRhJpun3mOwxfUlhRdudxia4Vo3-gXvjIaUFtlnaw-jpvf7gR3Q_FjB0nXbcSOMJrRXBezW6Sonk5vqklhmfxOR7YpBv7WZxRu2Win4cQd0h3UiF94ysrRSMw1Fl4j_jJ82X20B9byW0qM6-W0FY4xstiaqXxUmJf02sfj8cfY-sRaIu09wIgXBwWufbpSee-4XgW3iesjeUFVi5i4ieoXebOm8q_O6I5wZf_x6ReZ3g6JxWIXheJypoeo4BpSvFofkxgo7lyew2j9RhwORwr1e9Rx9QmesMYg9Odxikm_9rZ97lUUaMmyvYqRfiauWrXgOI4-h3s9qbosVBo_0_kwk8Oa8t5gb0QZQd6Ub2hMfJWfncUx5aB2jgIUbgS9fUweZO9-n3asvw8ZngZe"
+    },
+    "assetBundlePatterns": ["**/*"]
+  }
+}
