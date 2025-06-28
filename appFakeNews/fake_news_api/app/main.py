@@ -1,6 +1,8 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from app.classifier import classificar_noticia, obter_historico, status_modelo
+from app.database import obter_historico
+from app.classifier import classificar_noticia, status_modelo
+
 
 app = FastAPI(title="Fake News Detector API")
 
@@ -24,3 +26,4 @@ def post_classificar_noticia(noticia: Noticia):
     if not noticia.texto.strip():
         raise HTTPException(status_code=400, detail="Texto não pode ser vazio.")
     return classificar_noticia(noticia.texto)
+
