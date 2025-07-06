@@ -1,0 +1,38 @@
+services:
+  # Serviço da API FastAPI
+  api:
+    build:
+      context: ./fake_news_api
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONPATH=/app
+    volumes:
+      # Monta os modelos se já existirem
+      - ./fake_news_api/models:/app/models
+      - ./fake_news_api/data:/app/data
+    networks:
+      - fake-news-network
+    restart: unless-stopped
+
+  # Serviço do Frontend React
+  frontend:
+    build:
+      context: ./fake_news_frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    depends_on:
+      - api
+    networks:
+      - fake-news-network
+    restart: unless-stopped
+
+networks:
+  fake-news-network:
+    driver: bridge
+
+volumes:
+  api-data:
+  models-data:
