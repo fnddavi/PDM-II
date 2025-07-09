@@ -1,146 +1,129 @@
 # Detector de Fake News
 
-Este projeto consiste em uma API (FastAPI) para classificar notícias como "verdadeiras" ou "falsas" e um frontend (React com TypeScript e Material UI) para interagir com essa API.
+Projeto com uma API (FastAPI) para classificar notícias como verdadeiras ou falsas, e um frontend (React + TypeScript + Material UI) para interação com a API.
 
 ---
 
 ## Estrutura do Projeto
 
-        .
-        ├── fake_news_api/ # Backend da API (FastAPI)
-        │   ├── app/
-        │   │   ├── classifier.py
-        │   │   ├── database.py
-        │   │   ├── main.py
-        │   │   ├── model.py
-        │   │   └── utils.py
-        │   ├── models/ # (será criado após o treinamento)
-        │   ├── venv/
-        │   └── requirements.txt
-        ├── fake-news-frontend/
-        │   ├── public/
-        │   ├── src/
-        │   │   ├── api.ts
-        │   │   ├── App.css
-        │   │   ├── App.tsx
-        │   │   ├── components/
-        │   │   │   ├── ApiStatus.tsx
-        │   │   │   ├── HistoryList.tsx
-        │   │   │   └── NewsClassifier.tsx
-        │   │   ├── index.css
-        │   │   └── main.tsx
-        │   ├── venv/
-        │   ├── package.json
-        │   ├── tsconfig.json
-        │   └── vite.config.ts
-        └── README.md
+```
+.
+├── fake_news_api/           # Backend (FastAPI)
+│   ├── app/                 # Lógica da API
+│   ├── models/              # Modelos treinados
+│   ├── venv/                # Ambiente virtual (opcional)
+│   └── requirements.txt     # Dependências do backend
+├── fake-news-frontend/      # Frontend (React)
+│   ├── public/
+│   ├── src/
+│   ├── venv/                # Ambiente Node (opcional)
+│   ├── package.json
+│   └── vite.config.ts
+└── README.md
+```
 
 ---
 
-## Como Configurar e Rodar o Projeto
+## Requisitos
 
-Siga os passos abaixo para configurar e executar tanto o backend quanto o frontend.
+- Python 3.7+
+- Node.js e npm (ou Yarn)
+- Conta no Kaggle com o arquivo `kaggle.json` (credenciais da API)
 
-### Pré-requisitos
+Para gerar o `kaggle.json`, acesse sua conta Kaggle:  
+https://www.kaggle.com/your-username/account  
+Depois, mova o arquivo para:
 
-- **Python 3.7+:** Certifique-se de ter o Python instalado.
-- **Node.js e npm (ou Yarn):** Necessário para o frontend.
-- **Credenciais do Kaggle API:** Para que o backend possa baixar o dataset de treinamento.
-  - Vá para sua conta do Kaggle ([kaggle.com/your-username/account](https://www.kaggle.com/your-username/account)).
-  - Gere um novo token de API (`kaggle.json`).
-  - Mova `kaggle.json` para a pasta `~/.kaggle/` (Linux/macOS) ou `C:\Users\<SeuUsuario>\.kaggle\` (Windows). Crie a pasta `.kaggle` se ela não existir.
-
-### 1. Configurar e Rodar o Backend (API)
-
-1.  **Navegue até a pasta do backend:**
-
-    ```bash
-    cd fake_news_api
-    ```
-
-2.  **Crie um ambiente virtual (recomendado):**
-
-    ```bash
-    python -m venv venv
-    ```
-
-3.  **Ative o ambiente virtual:**
-
-    - **Windows:**
-      ```bash
-      .\venv\Scripts\activate
-      ```
-    - **macOS/Linux:**
-      ```bash
-      source venv/bin/activate
-      ```
-
-4.  **Instale as dependências:**
-
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-5.  **Baixe os dados do NLTK (para processamento de texto):**
-
-    ```bash
-    python -c "import nltk; nltk.download('stopwords')"
-    ```
-
-6.  **Treine o modelo de classificação:**
-    Este passo fará o download do dataset do Kaggle, treinará o modelo e o salvará.
-
-    ```bash
-    python train.py
-    ```
-
-    Você verá algumas métricas de avaliação do modelo no final do treinamento.
-
-7.  **Inicie o servidor da API:**
-    ```bash
-    uvicorn app.main:app --reload
-    ```
-    A API estará acessível em `http://127.0.0.1:8000`. Você pode testar os endpoints e ver a documentação interativa em `http://127.0.0.1:8000/docs`.
-
-### 2. Configurar e Rodar o Frontend (React)
-
-**Abra um NOVO terminal** e siga estes passos:
-
-1.  **Navegue até a pasta do frontend:**
-
-    ```bash
-    cd fake-news-frontend
-    ```
-
-2.  **Instale as dependências:**
-
-    ```bash
-    npm install
-    ```
-
-    _(Se encontrar problemas, verifique se Node.js e npm estão instalados corretamente)_
-
-3.  **Inicie o servidor de desenvolvimento do frontend:**
-    ```bash
-    npm run dev
-    ```
-    O frontend estará acessível em `http://localhost:5173/`.
-
-### 3. Usar a Aplicação
-
-Com ambos os servidores (API e Frontend) rodando:
-
-- Abra seu navegador e acesse `http://localhost:5173/`.
-- Você verá a interface do "Detector de Fake News".
-- Verifique o "Status da API" para confirmar a conexão.
-- Utilize a caixa de texto para inserir notícias e classificá-las.
-- O histórico de classificações será atualizado automaticamente.
+- Linux/macOS: `~/.kaggle/kaggle.json`
+- Windows: `C:\Users\<SeuUsuario>\.kaggle\kaggle.json`
 
 ---
 
-## Resolução de Problemas Comuns
+## Como Rodar
 
-- **Problemas de CORS:** Se o frontend não conseguir se comunicar com a API, verifique se o middleware CORS em `fake_news_api/app/main.py` está configurado corretamente para permitir `http://localhost:5173`.
-- **"Tela em branco" no frontend:** Verifique o console do navegador (`F12`) e o terminal onde o `npm run dev` está rodando em busca de erros.
-- **"Modelo não treinado" ou erros na API:** Verifique o terminal onde a API está rodando e certifique-se de que `python train.py` foi executado com sucesso.
-- **Kaggle API:** Certifique-se de que seu arquivo `kaggle.json` está na pasta correta (`~/.kaggle/` ou `C:\Users\<SeuUsuario>\.kaggle\`).
+### 1. Backend (API)
+
+```bash
+cd fake_news_api
+python -m venv .venv
+source .venv/bin/activate     # ou .\.venv\Scripts\activate no Windows
+pip install -r requirements.txt
+python -c "import nltk; nltk.download('stopwords')"
+python train.py               # Treina o modelo e salva os arquivos
+uvicorn app.main:app --reload
+```
+
+Acesse a API em: http://127.0.0.1:8000  
+Documentação Swagger: http://127.0.0.1:8000/docs
+
+---
+
+### 2. Frontend (React)
+
+Em um novo terminal:
+
+```bash
+cd fake-news-frontend
+npm install
+npm run dev
+```
+
+Acesse a aplicação em: http://localhost:5173
+
+---
+
+## Como Usar
+
+- Acesse o frontend em `http://localhost:5173`
+- Verifique o status da API
+- Insira uma notícia e veja a classificação
+- O histórico de classificações aparecerá automaticamente
+
+---
+
+## Problemas Comuns
+
+- **Erro de CORS:** Verifique se a API permite requisições do frontend (`http://localhost:5173`)
+- **Tela branca:** Verifique erros no console do navegador ou terminal do frontend
+- **Modelo não encontrado:** Certifique-se de que `train.py` foi executado
+- **Erro com Kaggle:** Confirme que `kaggle.json` está no local correto
+
+---
+
+## Uso com Docker
+
+```bash
+# Navegue até a raiz do projeto
+cd /caminho/para/appFakeNews
+
+# Subir o projeto
+docker compose up --build
+
+# Em background
+docker compose up -d --build
+
+# Parar
+docker compose down
+
+# Parar e remover volumes
+docker compose down -v
+
+# Logs
+docker compose logs -f
+docker compose logs -f api
+docker compose logs -f frontend
+
+# Subir ou reconstruir serviços específicos
+docker compose up api
+docker compose build frontend
+
+# Acessar container da API
+docker compose exec api bash
+
+# Status dos containers
+docker compose ps
+
+# Reiniciar serviços
+docker compose restart api
+docker compose restart frontend
+```
