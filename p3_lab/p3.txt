@@ -1,0 +1,40 @@
+Preciso Implementar uma API em Python para reconhecimento automático de emoções em frases. O sistema 
+deverá receber uma frase via endpoint e retornar a emoção predominante detectada (alegria, tristeza, raiva, surpresa, medo, nojo etc).
+O projeto deve contemplar pré-processamento, vetorização, treinamento de modelo e criação dos endpoints.
+ 
+Objetivos 
+• Praticar técnicas de PLN aplicadas à classificação de emoções.
+• Utilizar abordagens de vetorização (TF-IDF, embeddings).
+• Treinar modelos multi-classe e avaliar o desempenho usando métricas apropriadas.
+• Implementar e documentar uma API RESTful em Python
+
+Etapas para Execução 
+1 Coleta de Dados 
+Escolha um dos datasets recomendados:
+- Corpus de Emoções em Português: https://github.com/erickrf/portuguese-emotion-detection
+- BEM - Brazilian Portuguese Emotion Dataset: https://github.com/gabrielquintao/bem
+- Corpus de Emoções em Textos Curtos: https://www.linguateca.pt/Repositorio/EmoCorpus/
+ 
+2 Limpeza e Pré-processamento dos Textos 
+Implemente as rotinas de limpeza, como:
+- Conversão para minúsculas
+- Remoção de pontuação e caracteres especiais
+- Remoção de stopwords
+- Tokenização
+ 
+3 Vetorização dos Textos 
+Transforme os textos em vetores numéricos usando:
+- TF-IDF
+- Documente cada passo, mostrando exemplos de frases antes e depois do pré-processamento.
+ 
+4 Treinamento e Avaliação do Modelo 
+Divida os dados em treino e teste.
+Avalie os resultados usando acurácia e precisão.
+
+5 Implementação da API 
+Implemente uma API com FastAPI ou Flask contendo ao menos o endpoint principal:
+- POST /api/detectar-emocao: Recebe { "frase": "..." } e retorna a emoção predominante e as 
+probabilidades para cada classe.
+
+Opcional: 
+- GET /api/resultados: retorna uma acurácia e precisão.
